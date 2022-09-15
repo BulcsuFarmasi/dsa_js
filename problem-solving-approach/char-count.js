@@ -1,8 +1,8 @@
 function charCount(str) {
     const result = {}
     for (let char of str) {
-        char = char.toLowerCase();
         if (isAlphaNumeric(char)) {
+            char = char.toLowerCase();
             result[char] = ++result[char] || 1;
         }
     }
