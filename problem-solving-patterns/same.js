@@ -13,27 +13,33 @@ function same(array, squaredArray) {
             throw "Elements of array need to numbers"
         }
     }
-    let frequenciesMatch = true;
-    for (let element of array) {
-        let arrayFrequency = 0;
-        for (let countElement of array) {
-            if (element === countElement) {
-                arrayFrequency++;
-            }
-        }
-        let squaredArrayFrequency = 0;
-        for (let squaredCountElement of squaredArray) {
-            if (squaredCountElement === element ** 2) {
-                squaredArrayFrequency++;
-            }
-        }
-        if (arrayFrequency !== squaredArrayFrequency) {
-            frequenciesMatch = false;
-            break;
-        }
+
+    if (array.length != squaredArray.length) {
+        return false;
     }
-    return frequenciesMatch;
+
+    let frequencyCounter1 = {}
+    let frequencyCounter2 = {}
+
+    for (let val of array) {
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+    }
+
+    for (let val of squaredArray) {
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    }
+    for (let key in frequencyCounter1) {
+        if (!(key ** 2 in frequencyCounter2)) {
+            return false;
+        }
+        if (frequencyCounter2[key ** 2 !== frequencyCounter1[key]]) {
+            return false;
+        }
+
+    }
+
+    return true;
 
 }
 
-console.log(same([1,2,3,4,1],[4,9,1,16,1]));
+console.log(same([1,2,3,4],[4,9,16,16]));
