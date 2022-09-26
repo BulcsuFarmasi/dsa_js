@@ -3,15 +3,16 @@ function countUniqueValues(array) {
         return 0;
     }
 
-    let countOfUniqueValues = 1;
+    let i = 0;
 
-    for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] !== array[i + 1]) {
-            countOfUniqueValues++;
+    for (let j = 0; j < array.length; j++) {
+        if (array[i] !== array[j]) {
+            array[i] = array[j];
+            i++;
         }
     }
 
-    return countOfUniqueValues;
+    return i + 1;
 }
 
-console.log(countUniqueValues([-2,-2,-1,0,1]));
+console.log(countUniqueValues([-2, -2, -1, 0, 1]));
