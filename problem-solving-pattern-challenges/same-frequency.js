@@ -1,44 +1,36 @@
 function sameFrequency(number, otherNumber) {
+
+    checkNumberValidity(number);
+    checkNumberValidity(otherNumber);
+
+    const numberFrequencies = calculateNumberFrequencies(number);
+    const otherNumberFrequencies = calculateNumberFrequencies(otherNumber);
     
+    for(let numberFrequency in numberFrequencies) {
+        if (!otherNumberFrequencies[numberFrequency] || otherNumberFrequencies[numberFrequency] != numberFrequencies[numberFrequency]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function checkNumberValidity(number) {
     if (!Number.isInteger(number) || number <= 0) {
         throw 'Number should be positive integer'
     }
+}
 
-    if (!Number.isInteger(otherNumber) || otherNumber <= 0) {
-        throw 'Other number should be positve integer';
-    }
-
+function calculateNumberFrequencies(number) {
     const numberFrequencies = {};
 
     while(number > 0) {
         const currentDigit = number % 10;
-        if (numberFrequencies[currentDigit] > 0) {
-            numberFrequencies[currentDigit]++;
-        } else {
-            numberFrequencies[currentDigit] = 1;
-        }
+        numberFrequencies[currentDigit] = (numberFrequencies[currentDigit] || 0) + 1;
         number = Math.floor(number / 10);
     }
 
-    const otherNumberFrequencies = {};
-    while(otherNumber > 0) {
-        const currentDigit = otherNumber % 10;
-        if (otherNumberFrequencies[currentDigit] > 0) {
-            otherNumberFrequencies[currentDigit]++;
-        } else {
-            otherNumberFrequencies[currentDigit] = 1;
-        }
-        otherNumber = Math.floor(otherNumber / 10);
-    }
-
-    
-        for(let numberFrequency in numberFrequencies) {
-            if (!otherNumberFrequencies[numberFrequency] || otherNumberFrequencies[numberFrequency] != numberFrequencies[numberFrequency]) {
-                return false;
-            }
-        }
-    return true;
-
+    return numberFrequencies;
 }
 
-console.log(sameFrequency(3455,5345));
+console.log(sameFrequency(3455,5453));
