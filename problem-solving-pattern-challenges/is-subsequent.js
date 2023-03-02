@@ -8,12 +8,15 @@ function isSubsequence(search, containing) {
     for(let i = 0; i < containing.length; i++) {
         if (containing[i] === search[searchPointer]) {
             searchPointer++;
+        } 
+        if (searchPointer === search.length) {
+            return true;
         }
     }
 
-    return searchPointer === search.length;
+    return false;
 
 }
 
 
-console.log(isSubsequence('cad', 'acdor')); 
+console.log(isSubsequence('sing', 'string')); 
