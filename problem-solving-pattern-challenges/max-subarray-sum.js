@@ -11,17 +11,17 @@ function maxSubarraySum(ints, subarrayLength) {
     for (let i = 0; i < ints.length; i++) {
         currentSubarraySum += ints[i];
 
-        if (i -subarrayLength >= 0) {
+        if (i - subarrayLength >= 0) {
             currentSubarraySum -= ints[i - subarrayLength];
         }
 
         if (currentSubarraySum > maxSubarraySum) {
             maxSubarraySum = currentSubarraySum;
         }
-        
+
     }
 
-    return maxSubarraySum;s
+    return maxSubarraySum;
 }
 
-console.log(maxSubarraySum([2,3,9,4,5], 3));
+console.log(maxSubarraySum([2, 3, 9, 4, 5], 3));
