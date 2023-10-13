@@ -1,4 +1,4 @@
-function collectOddValues (arr) {
+function collectOddValuesHelper (arr) {
     const result = [];
 
     function helper(helperInput) {
@@ -18,4 +18,4 @@ function collectOddValues (arr) {
     return result;
 }
 
-console.log(collectOddValues([1,10,9,101,11,12,33,40]));
+console.log(collectOddValuesHelper([1,10,9,101,11,12,33,40]));
