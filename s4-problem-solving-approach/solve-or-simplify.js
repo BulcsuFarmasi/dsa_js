@@ -3,7 +3,7 @@ function charCount(str) {
     const result = {};
     // loop over string for each character
     for (let i = 0; i < str.length; i++)  {
-        const char = str[i]
+        const char = str[i].toLowerCase()
         if (result[char] > 0) {
             result[char]++
         } else {
@@ -17,4 +17,4 @@ function charCount(str) {
     return result;
 }
 
-console.log(charCount("Farmasi"))
+console.log(charCount("Julian McMahon"))
