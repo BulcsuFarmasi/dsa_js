@@ -9,9 +9,10 @@
 function charCount(str) {
     // make object to return at end
     const result = {};
+    const allowed  = /\p{L}|\p{N}/u
     // loop over string for each character
     for (let char of str.toLowerCase()) {
-        if (isAlphanumeric(char))
+        if (allowed.test(char))
             result[char] =(result[char] || 0) + 1;
         // if char is a number/letter AND a key in object, add one to count
         // if char is number/letter AND not in object add it to object and set value to 1
@@ -21,14 +22,4 @@ function charCount(str) {
     return result;
 }
 
-function isAlphanumeric(char) {
-    const code = char.charCodeAt(0);
-    if (!(code > 47 && code < 58) &&
-        !(code > 64 && code < 91) &&
-        !(code > 96 && code < 123)) {
-        return false;
-    }
-    return true;
-}
-
-console.log(charCount("Julian McMahon"))
+console.log(charCount("Farmasi Bulcsú"))
